@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopInventory.Views.PurchasedItemsPage"
+             Title="{Binding Title}">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header with Add Button -->
+        <Grid Grid.Row="0" Padding="20,10">
+            <Label Text="Purchased Items" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center" />
+
+            <Button Text="Add Item"
+                    Command="{Binding AddItemCommand}"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    HorizontalOptions="End"
+                    WidthRequest="100" />
+        </Grid>
+
+        <!-- Items List -->
+        <RefreshView Grid.Row="1" 
+                     IsRefreshing="{Binding IsBusy}"
+                     Command="{Binding LoadItemsCommand}">
+
+            <CollectionView ItemsSource="{Binding PurchasedItems}"
+                           BackgroundColor="Transparent">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="15,10" 
+                              BackgroundColor="White"
+                              Margin="10,5">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Item Name -->
+                            <Label Grid.Row="0" Grid.Column="0" 
+                                   Text="{Binding ItemName}"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+
+                            <!-- Date -->
+                            <Label Grid.Row="1" Grid.Column="0" 
+                                   Text="{Binding PurchaseDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+
+                            <!-- Quantity and Price -->
+                            <Label Grid.Row="2" Grid.Column="0" 
+                                   Text="{Binding Quantity, StringFormat='Qty: {0}'}"
+                                   FontSize="14" />
+
+                            <Label Grid.Row="0" Grid.Column="1" 
+                                   Text="{Binding Price, StringFormat='${0:F2}'}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource Primary}"
+                                   VerticalOptions="Center" />
+
+                            <!-- Edit Button -->
+                            <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"
+                                    Text="Edit"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditItemCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="{StaticResource Secondary}"
+                                    TextColor="White"
+                                    WidthRequest="60"
+                                    HeightRequest="30"
+                                    FontSize="12"
+                                    VerticalOptions="Center" />
+
+                            <!-- Delete Button -->
+                            <Button Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
+                                    Text="Delete"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteItemCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    WidthRequest="60"
+                                    HeightRequest="30"
+                                    FontSize="12"
+                                    VerticalOptions="Center" />
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+
+</ContentPage>

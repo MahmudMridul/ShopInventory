@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="ShopInventory.Views.SoldItemsPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header with Add Button -->
+        <Grid Grid.Row="0" Padding="20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" 
+                   Text="Sold Items" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   VerticalOptions="Center" />
+
+            <Button Grid.Column="1"
+                    Text="Add Item"
+                    Command="{Binding AddItemCommand}"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    FontSize="16"
+                    Padding="15,8" />
+        </Grid>
+
+        <!-- Items List -->
+        <CollectionView Grid.Row="1" 
+                        ItemsSource="{Binding SoldItems}"
+                        BackgroundColor="Transparent"
+                        Margin="10,0">
+            <CollectionView.EmptyView>
+                <StackLayout Padding="20" VerticalOptions="Center">
+                    <Label Text="No sold items found" 
+                           FontSize="18" 
+                           HorizontalOptions="Center" 
+                           TextColor="Gray" />
+                    <Label Text="Tap 'Add Item' to add your first sold item" 
+                           FontSize="14" 
+                           HorizontalOptions="Center" 
+                           TextColor="Gray" 
+                           Margin="0,10,0,0" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="15,10" BackgroundColor="White" Margin="0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Item Info -->
+                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+                            <Label Text="{Binding ItemName}" 
+                                   FontSize="18" 
+                                   FontAttributes="Bold" 
+                                   TextColor="Black" />
+                            <Label Text="{Binding SaleDate, StringFormat='{0:MMM dd, yyyy}'}" 
+                                   FontSize="14" 
+                                   TextColor="Gray" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Quantity, StringFormat='Qty: {0}'}" 
+                                       FontSize="14" 
+                                       TextColor="Gray" />
+                                <Label Text="{Binding Price, StringFormat='${0:F2}'}" 
+                                       FontSize="16" 
+                                       FontAttributes="Bold" 
+                                       TextColor="Green" 
+                                       Margin="20,0,0,0" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!-- Action Buttons -->
+                        <Button Grid.Row="0" Grid.Column="1"
+                                Text="Edit"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditItemCommand}"
+                                CommandParameter="{Binding}"
+                                BackgroundColor="{StaticResource Secondary}"
+                                TextColor="White"
+                                FontSize="14"
+                                Padding="10,5"
+                                Margin="5,0" />
+
+                        <Button Grid.Row="0" Grid.Column="2"
+                                Text="Delete"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteItemCommand}"
+                                CommandParameter="{Binding}"
+                                BackgroundColor="Red"
+                                TextColor="White"
+                                FontSize="14"
+                                Padding="10,5"
+                                Margin="5,0" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator Grid.Row="1" 
+                           IsVisible="{Binding IsBusy}" 
+                           IsRunning="{Binding IsBusy}" 
+                           Color="{StaticResource Primary}" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center" />
+    </Grid>
+</ContentPage>

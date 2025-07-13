@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="ShopInventory.Views.AddEditSoldItemPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <!-- Item Name -->
+            <StackLayout>
+                <Label Text="Item Name" FontSize="16" FontAttributes="Bold" />
+                <Entry Text="{Binding ItemName}" 
+                       Placeholder="Enter item name" 
+                       FontSize="16" />
+            </StackLayout>
+
+            <!-- Quantity -->
+            <StackLayout>
+                <Label Text="Quantity" FontSize="16" FontAttributes="Bold" />
+                <Entry Text="{Binding Quantity}" 
+                       Placeholder="Enter quantity" 
+                       Keyboard="Numeric" 
+                       FontSize="16" />
+            </StackLayout>
+
+            <!-- Price -->
+            <StackLayout>
+                <Label Text="Price" FontSize="16" FontAttributes="Bold" />
+                <Entry Text="{Binding Price}" 
+                       Placeholder="Enter price" 
+                       Keyboard="Numeric" 
+                       FontSize="16" />
+            </StackLayout>
+
+            <!-- Sale Date -->
+            <StackLayout>
+                <Label Text="Sale Date" FontSize="16" FontAttributes="Bold" />
+                <DatePicker Date="{Binding SaleDate}" 
+                            FontSize="16" />
+            </StackLayout>
+
+            <!-- Action Buttons -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Margin="0,20,0,0">
+                <Button Text="Save" 
+                        Command="{Binding SaveCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"
+                        FontSize="16"
+                        Padding="30,10"
+                        MinimumWidthRequest="120" />
+
+                <Button Text="Cancel" 
+                        Command="{Binding CancelCommand}"
+                        BackgroundColor="Gray"
+                        TextColor="White"
+                        FontSize="16"
+                        Padding="30,10"
+                        MinimumWidthRequest="120" />
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
