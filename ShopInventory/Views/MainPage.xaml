@@ -30,7 +30,7 @@
             <Button x:Name="SoldItemsBtn"
                     Text="Sold Items"
                     FontSize="18"
-                    BackgroundColor="{StaticResource Secondary}"
+                    BackgroundColor="{StaticResource Primary}"
                     TextColor="White"
                     Command="{Binding NavigateToSoldItemsCommand}"
                     WidthRequest="200"
