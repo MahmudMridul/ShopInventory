@@ -61,14 +61,14 @@ namespace ShopInventory.ViewModels
 
         private async Task AddItem()
         {
-            //await Shell.Current.GoToAsync(nameof(AddEditPurchasedItemPage));
+            await Shell.Current.GoToAsync(nameof(AddEditPurchasedItemPage));
         }
 
         private async Task EditItem(PurchasedItem item)
         {
             if (item == null) return;
 
-            //await Shell.Current.GoToAsync($"{nameof(AddEditPurchasedItemPage)}?ItemId={item.Id}");
+            await Shell.Current.GoToAsync($"{nameof(AddEditPurchasedItemPage)}?ItemId={item.Id}");
         }
 
         private async Task DeleteItem(PurchasedItem item)
