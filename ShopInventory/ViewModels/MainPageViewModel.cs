@@ -23,7 +23,7 @@ namespace ShopInventory.ViewModels
 
         private async Task NavigateToSoldItems()
         {
-            //await Shell.Current.GoToAsync(nameof(SoldItemsPage));
+            await Shell.Current.GoToAsync(nameof(SoldItemsPage));
         }
     }
 }
