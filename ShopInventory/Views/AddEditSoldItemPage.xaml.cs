@@ -5,7 +5,7 @@ namespace ShopInventory.Views
     [QueryProperty(nameof(ItemId), "ItemId")]
     public partial class AddEditSoldItemPage : ContentPage
     {
-        public string ItemId { get; set; }
+        public string ItemId { get; set; } = null!;
 
         public AddEditSoldItemPage(AddEditSoldItemViewModel viewModel)
         {
