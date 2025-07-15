@@ -2,8 +2,11 @@ using ShopInventory.ViewModels;
 
 namespace ShopInventory.Views
 {
+    [QueryProperty(nameof(ItemId), "ItemId")]
     public partial class AddEditSoldItemPage : ContentPage
     {
+        public string ItemId { get; set; }
+
         public AddEditSoldItemPage(AddEditSoldItemViewModel viewModel)
         {
             InitializeComponent();
@@ -16,8 +19,8 @@ namespace ShopInventory.Views
             
             if (BindingContext is AddEditSoldItemViewModel viewModel)
             {
-                // Get ItemId from query parameters if editing
-                if (int.TryParse(GetQueryParameter("ItemId"), out int itemId))
+                // Parse ItemId from query property
+                if (int.TryParse(ItemId, out int itemId))
                 {
                     await viewModel.LoadItem(itemId);
                 }
@@ -26,21 +29,6 @@ namespace ShopInventory.Views
                     await viewModel.LoadItem(0); // New item
                 }
             }
-        }
-
-        private string GetQueryParameter(string key)
-        {
-            var query = Shell.Current.CurrentState.Location.OriginalString;
-            var queryParams = query.Split('?', '&');
-            
-            foreach (var param in queryParams)
-            {
-                if (param.StartsWith($"{key}="))
-                {
-                    return param.Substring(key.Length + 1);
-                }
-            }
-            return null;
         }
     }
 }

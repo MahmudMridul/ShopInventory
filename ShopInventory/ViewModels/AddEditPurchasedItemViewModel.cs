@@ -9,8 +9,8 @@ namespace ShopInventory.ViewModels
         private readonly DatabaseService _databaseService;
         private PurchasedItem _currentItem;
         private string _itemName = string.Empty;
-        private int _quantity = 1;
-        private decimal _price = 0;
+        private string _quantity = "1";
+        private string _price = "0";
         private DateTime _purchaseDate = DateTime.Today;
 
         public AddEditPurchasedItemViewModel(DatabaseService databaseService)
@@ -18,7 +18,7 @@ namespace ShopInventory.ViewModels
             _databaseService = databaseService;
             _currentItem = new PurchasedItem();
 
-            Title = "Add Item";
+            Title = "Add Purchased Item";
 
             SaveCommand = new Command(async () => await SaveItem(), () => CanSave());
             CancelCommand = new Command(async () => await CancelEdit());
@@ -34,7 +34,7 @@ namespace ShopInventory.ViewModels
             }
         }
 
-        public int Quantity
+        public string Quantity
         {
             get => _quantity;
             set
@@ -44,7 +44,7 @@ namespace ShopInventory.ViewModels
             }
         }
 
-        public decimal Price
+        public string Price
         {
             get => _price;
             set
@@ -69,6 +69,12 @@ namespace ShopInventory.ViewModels
             {
                 _currentItem = new PurchasedItem();
                 Title = "Add Purchased Item";
+                
+                // Reset to default values for new item
+                ItemName = string.Empty;
+                Quantity = "1";
+                Price = "0";
+                PurchaseDate = DateTime.Today;
             }
             else
             {
@@ -77,15 +83,17 @@ namespace ShopInventory.ViewModels
                 Title = "Edit Purchased Item";
 
                 ItemName = _currentItem.ItemName;
-                Quantity = _currentItem.Quantity;
-                Price = _currentItem.Price;
+                Quantity = _currentItem.Quantity.ToString();
+                Price = _currentItem.Price.ToString();
                 PurchaseDate = _currentItem.PurchaseDate;
             }
         }
 
         private bool CanSave()
         {
-            return !string.IsNullOrWhiteSpace(ItemName) && Quantity > 0 && Price > 0;
+            return !string.IsNullOrWhiteSpace(ItemName) && 
+                   int.TryParse(Quantity, out int qty) && qty > 0 &&
+                   decimal.TryParse(Price, out decimal price) && price > 0;
         }
 
         private async Task SaveItem()
@@ -96,8 +104,8 @@ namespace ShopInventory.ViewModels
             try
             {
                 _currentItem.ItemName = ItemName;
-                _currentItem.Quantity = Quantity;
-                _currentItem.Price = Price;
+                _currentItem.Quantity = int.Parse(Quantity);
+                _currentItem.Price = decimal.Parse(Price);
                 _currentItem.PurchaseDate = PurchaseDate;
 
                 await _databaseService.SavePurchasedItemAsync(_currentItem);
