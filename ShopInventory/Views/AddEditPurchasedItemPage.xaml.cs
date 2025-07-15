@@ -30,5 +30,13 @@ namespace ShopInventory.Views
                 }
             }
         }
+
+        private void OnEntryFocused(object sender, FocusEventArgs e)
+        {
+            if (BindingContext is AddEditPurchasedItemViewModel viewModel)
+            {
+                viewModel.HideSuggestionsCommand.Execute(null);
+            }
+        }
     }
 }

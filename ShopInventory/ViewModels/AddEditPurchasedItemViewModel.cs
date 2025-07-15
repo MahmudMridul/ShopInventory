@@ -27,6 +27,7 @@ namespace ShopInventory.ViewModels
             SaveCommand = new Command(async () => await SaveItem(), () => CanSave());
             CancelCommand = new Command(async () => await CancelEdit());
             SelectSuggestionCommand = new Command<string>(OnSuggestionSelected);
+            HideSuggestionsCommand = new Command(HideSuggestions);
         }
 
         public string ItemName
@@ -81,6 +82,7 @@ namespace ShopInventory.ViewModels
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
         public ICommand SelectSuggestionCommand { get; }
+        public ICommand HideSuggestionsCommand { get; }
 
         public async Task LoadItem(int itemId)
         {
@@ -151,6 +153,11 @@ namespace ShopInventory.ViewModels
                 ItemName = suggestion;
                 ShowSuggestions = false;
             }
+        }
+
+        private void HideSuggestions()
+        {
+            ShowSuggestions = false;
         }
 
         private bool CanSave()

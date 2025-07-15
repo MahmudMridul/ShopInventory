@@ -39,7 +39,8 @@
                 <Entry Text="{Binding Quantity}" 
                        Placeholder="Enter quantity" 
                        Keyboard="Numeric" 
-                       FontSize="16" />
+                       FontSize="16"
+                       Focused="OnEntryFocused"/>
             </StackLayout>
 
             <!-- Price -->
@@ -48,14 +49,16 @@
                 <Entry Text="{Binding Price}" 
                        Placeholder="Enter price" 
                        Keyboard="Numeric" 
-                       FontSize="16" />
+                       FontSize="16"
+                       Focused="OnEntryFocused"/>
             </StackLayout>
 
             <!-- Purchase Date -->
             <StackLayout>
                 <Label Text="Purchase Date" FontSize="16" FontAttributes="Bold" />
                 <DatePicker Date="{Binding PurchaseDate}" 
-                            FontSize="16" />
+                            FontSize="16"
+                            Focused="OnEntryFocused"/>
             </StackLayout>
 
             <!-- Action Buttons -->

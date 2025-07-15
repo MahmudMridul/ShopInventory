@@ -2,6 +2,7 @@
 using ShopInventory.Services;
 using ShopInventory.Views;
 using ShopInventory.ViewModels;
+using CommunityToolkit.Maui;
 
 namespace ShopInventory
 {
@@ -12,6 +13,7 @@ namespace ShopInventory
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit() // Chain this method call here
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

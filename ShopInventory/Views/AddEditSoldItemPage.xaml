@@ -2,6 +2,7 @@
 <ContentPage x:Class="ShopInventory.Views.AddEditSoldItemPage"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="{Binding Title}">
 
     <ScrollView>
@@ -39,7 +40,8 @@
                 <Entry Text="{Binding Quantity}" 
                        Placeholder="Enter quantity" 
                        Keyboard="Numeric" 
-                       FontSize="16" />
+                       FontSize="16"
+                       Focused="OnEntryFocused" />
             </StackLayout>
 
             <!-- Price -->
@@ -48,14 +50,16 @@
                 <Entry Text="{Binding Price}" 
                        Placeholder="Enter price" 
                        Keyboard="Numeric" 
-                       FontSize="16" />
+                       FontSize="16"
+                       Focused="OnEntryFocused" />
             </StackLayout>
 
             <!-- Sale Date -->
             <StackLayout>
                 <Label Text="Sale Date" FontSize="16" FontAttributes="Bold" />
                 <DatePicker Date="{Binding SaleDate}" 
-                            FontSize="16" />
+                            FontSize="16"
+                            Focused="OnEntryFocused"/>
             </StackLayout>
 
             <!-- Action Buttons -->
