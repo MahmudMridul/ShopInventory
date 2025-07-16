@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopInventory.Views.DashboardPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <Label Text="Dashboard Overview"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource Primary}" />
+
+            <Frame BackgroundColor="{StaticResource Secondary}" 
+                   Padding="15"
+                   CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Quick Stats" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="White" />
+
+                    <Label Text="Total Purchased Items: 0" 
+                           FontSize="16"
+                           TextColor="White" />
+
+                    <Label Text="Total Sold Items: 0" 
+                           FontSize="16"
+                           TextColor="White" />
+
+                    <Label Text="Current Stock: 0" 
+                           FontSize="16"
+                           TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Grid RowDefinitions="Auto,Auto" 
+                  ColumnDefinitions="*,*" 
+                  RowSpacing="15" 
+                  ColumnSpacing="15">
+
+                <Button Grid.Row="0" Grid.Column="0"
+                        Text="Add Purchase"
+                        FontSize="16"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"
+                        HeightRequest="50" />
+
+                <Button Grid.Row="0" Grid.Column="1"
+                        Text="Add Sale"
+                        FontSize="16"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"
+                        HeightRequest="50" />
+
+                <Button Grid.Row="1" Grid.Column="0"
+                        Text="View Purchases"
+                        FontSize="16"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"
+                        HeightRequest="50" />
+
+                <Button Grid.Row="1" Grid.Column="1"
+                        Text="View Sales"
+                        FontSize="16"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"
+                        HeightRequest="50" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

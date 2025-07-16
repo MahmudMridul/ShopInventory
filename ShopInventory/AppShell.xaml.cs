@@ -9,6 +9,7 @@ namespace ShopInventory
             InitializeComponent();
 
             // Register routes for navigation
+            Routing.RegisterRoute(nameof(DashboardPage), typeof(DashboardPage));
             Routing.RegisterRoute(nameof(PurchasedItemsPage), typeof(PurchasedItemsPage));
             Routing.RegisterRoute(nameof(SoldItemsPage), typeof(SoldItemsPage));
             Routing.RegisterRoute(nameof(AddEditPurchasedItemPage), typeof(AddEditPurchasedItemPage));

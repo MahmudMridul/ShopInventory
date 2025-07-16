@@ -9,12 +9,19 @@ namespace ShopInventory.ViewModels
         {
             Title = "Shop Inventory";
 
+            NavigateToDashboardCommand = new Command(async () => await NavigateToDashboard());
             NavigateToPurchasedItemsCommand = new Command(async () => await NavigateToPurchasedItems());
             NavigateToSoldItemsCommand = new Command(async () => await NavigateToSoldItems());
         }
 
+        public ICommand NavigateToDashboardCommand { get; }
         public ICommand NavigateToPurchasedItemsCommand { get; }
         public ICommand NavigateToSoldItemsCommand { get; }
+
+        private async Task NavigateToDashboard()
+        {
+            await Shell.Current.GoToAsync(nameof(DashboardPage));
+        }
 
         private async Task NavigateToPurchasedItems()
         {

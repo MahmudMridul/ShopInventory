@@ -18,6 +18,15 @@
                    HorizontalOptions="Center"
                    TextColor="{StaticResource Secondary}" />
 
+            <Button x:Name="DashboardBtn"
+                    Text="Dashboard"
+                    FontSize="18"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    Command="{Binding NavigateToDashboardCommand}"
+                    WidthRequest="200"
+                    HeightRequest="50" />
+
             <Button x:Name="PurchasedItemsBtn"
                     Text="Purchased Items"
                     FontSize="18"

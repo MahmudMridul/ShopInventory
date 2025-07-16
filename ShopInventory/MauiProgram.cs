@@ -30,6 +30,7 @@ namespace ShopInventory
 
             // Register ViewModels
             builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<DashboardViewModel>();
             builder.Services.AddTransient<PurchasedItemsViewModel>();
             builder.Services.AddTransient<SoldItemsViewModel>();
             builder.Services.AddTransient<AddEditPurchasedItemViewModel>();
@@ -37,6 +38,7 @@ namespace ShopInventory
 
             // Register Views
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<DashboardPage>();
             builder.Services.AddTransient<PurchasedItemsPage>();
             builder.Services.AddTransient<SoldItemsPage>();
             builder.Services.AddTransient<AddEditPurchasedItemPage>();
