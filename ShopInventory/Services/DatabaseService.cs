@@ -67,5 +67,13 @@ namespace ShopInventory.Services
             await Init();
             return await _database.DeleteAsync(item);
         }
+
+        // Delete sold items older than specified days
+        public async Task<int> DeleteOldSoldItemsAsync(int daysOld = 90)
+        {
+            await Init();
+            var cutoffDate = DateTime.Today.AddDays(-daysOld);
+            return await _database.ExecuteAsync("DELETE FROM SoldItems WHERE SaleDate < ?", cutoffDate);
+        }
     }
 }
