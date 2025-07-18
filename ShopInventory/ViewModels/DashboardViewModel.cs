@@ -67,8 +67,8 @@ namespace ShopInventory.ViewModels
                 TotalPurchasedThisMonth = purchasedItemsThisMonth.Count;
 
                 // Total amounts
-                TotalAmountSoldThisMonth = soldItemsThisMonth.Sum(item => item.Price * item.Quantity);
-                TotalAmountPurchasedThisMonth = purchasedItemsThisMonth.Sum(item => item.Price * item.Quantity);
+                TotalAmountSoldThisMonth = soldItemsThisMonth.Sum(item => item.Price);
+                TotalAmountPurchasedThisMonth = purchasedItemsThisMonth.Sum(item => item.Price);
             }
             catch (Exception ex)
             {
