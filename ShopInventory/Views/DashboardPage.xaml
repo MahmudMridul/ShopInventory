@@ -6,13 +6,6 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
-
-            <Label Text="Dashboard Overview"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   TextColor="{StaticResource Primary}" />
-
             <!-- This Month Statistics -->
             <Label Text="This Month Statistics"
                    FontSize="20"
