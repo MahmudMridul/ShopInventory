@@ -9,5 +9,15 @@ namespace ShopInventory.Views
             InitializeComponent();
             BindingContext = viewModel;
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            
+            if (BindingContext is DashboardViewModel viewModel)
+            {
+                await viewModel.LoadDashboardData();
+            }
+        }
     }
 }
