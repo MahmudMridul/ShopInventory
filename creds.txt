@@ -1,0 +1,8 @@
+Alias: ShopInventory
+Pass: shopInv2@
+Full Name: Abdullah Al Mahmud
+Organization Unit: Software Development
+Organization: Mahmud
+City : Dhaka
+State: Bangladesh
+Country Code: BD
