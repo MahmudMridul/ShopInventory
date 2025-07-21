@@ -2,8 +2,6 @@
 
 A cross-platform inventory management application built with .NET MAUI 9.0, designed to help small businesses track their inventory, purchases, and sales with an intuitive dashboard.
 
-[Download Link](https://drive.google.com/file/d/1hTet8czihdi3Yl18MZB0oP3OGjOjARp7/view?usp=sharing)
-
 ## 🚀 Features
 
 ### Dashboard Overview
