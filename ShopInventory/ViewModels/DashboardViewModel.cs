@@ -10,6 +10,7 @@ namespace ShopInventory.ViewModels
         private int _totalPurchasedThisMonth;
         private decimal _totalAmountPurchasedThisMonth;
         private decimal _totalAmountSoldThisMonth;
+        private decimal _profitThisMonth;
 
         public DashboardViewModel(DatabaseService databaseService)
         {
@@ -43,6 +44,12 @@ namespace ShopInventory.ViewModels
             set => SetProperty(ref _totalAmountSoldThisMonth, value);
         }
 
+        public decimal ProfitThisMonth
+        {
+            get => _profitThisMonth;
+            set => SetProperty(ref _profitThisMonth, value);
+        }
+
         public ICommand LoadDashboardDataCommand { get; }
 
         public async Task LoadDashboardData()
@@ -69,6 +76,9 @@ namespace ShopInventory.ViewModels
                 // Total amounts
                 TotalAmountSoldThisMonth = soldItemsThisMonth.Sum(item => item.Price);
                 TotalAmountPurchasedThisMonth = purchasedItemsThisMonth.Sum(item => item.Price);
+
+                // Calculate profit (Sold Amount - Purchased Amount)
+                ProfitThisMonth = TotalAmountSoldThisMonth - TotalAmountPurchasedThisMonth;
             }
             catch (Exception ex)
             {

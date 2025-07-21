@@ -14,16 +14,16 @@
                    HorizontalOptions="Center" />
 
             <!-- Statistics Grid -->
-            <Grid RowDefinitions="Auto,Auto" 
+            <Grid RowDefinitions="Auto,Auto,Auto" 
                   ColumnDefinitions="*,*" 
                   RowSpacing="15" 
                   ColumnSpacing="15">
 
                 <!-- Purchased Items Card -->
-                <Frame Grid.Row="0" Grid.Column="0"
+                <Border Grid.Row="0" Grid.Column="0"
                        BackgroundColor="{StaticResource Primary}"
                        Padding="15"
-                       CornerRadius="10">
+                       StrokeShape="RoundRectangle 10">
                     <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
                         <Label Text="Purchased Items" 
                                FontSize="14" 
@@ -37,13 +37,13 @@
                                TextColor="White"
                                HorizontalOptions="Center" />
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
 
                 <!-- Sold Items Card -->
-                <Frame Grid.Row="0" Grid.Column="1"
+                <Border Grid.Row="0" Grid.Column="1"
                        BackgroundColor="{StaticResource Primary}"
                        Padding="15"
-                       CornerRadius="10">
+                       StrokeShape="RoundRectangle 10">
                     <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
                         <Label Text="Sold Items" 
                                FontSize="14" 
@@ -57,7 +57,7 @@
                                TextColor="White"
                                HorizontalOptions="Center" />
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
 
                 <!-- Amount Purchased Card -->
                 <Border Grid.Row="1" Grid.Column="0"
@@ -93,6 +93,26 @@
 
                         <Label Text="{Binding TotalAmountSoldThisMonth, StringFormat='BDT {0:F2}'}" 
                                FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Profit Card -->
+                <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                        BackgroundColor="#17a2b8"
+                        Padding="15"
+                        StrokeShape="RoundRectangle 10">
+                    <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="Profit" 
+                               FontSize="14" 
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+
+                        <Label Text="{Binding ProfitThisMonth, StringFormat='BDT {0:F2}'}" 
+                               FontSize="24"
                                FontAttributes="Bold"
                                TextColor="White"
                                HorizontalOptions="Center" />

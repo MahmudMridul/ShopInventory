@@ -13,11 +13,6 @@
                    HorizontalOptions="Center"
                    TextColor="{StaticResource Primary}" />
 
-            <Label Text="Manage your shop's inventory efficiently"
-                   FontSize="18"
-                   HorizontalOptions="Center"
-                   TextColor="{StaticResource Secondary}" />
-
             <Button x:Name="DashboardBtn"
                     Text="Dashboard"
                     FontSize="18"
